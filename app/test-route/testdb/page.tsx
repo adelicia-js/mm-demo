@@ -10,7 +10,6 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import MenuOpenRoundedIcon from "@mui/icons-material/MenuOpenRounded";
 import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
-
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
@@ -20,6 +19,7 @@ import BiotechOutlinedIcon from "@mui/icons-material/BiotechOutlined";
 import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
 import logoImg from "../../../public/logo.webp";
 import sjuLogo from "../../../public/sju-logo.webp";
+
 //TODO: Make this a protected route (see example)
 //TODO: Make this the dashboard
 
@@ -72,28 +72,41 @@ export default async function Index() {
   } = await supabase.auth.getUser();
 
   return (
-    <div id="dashboard" className={`${bodyText.className} m-0 w-full min-h-screen bg-teal-500/40`}>
+    <div
+      id="dashboard"
+      className={`${bodyText.className} m-0 w-full min-h-screen bg-teal-500/40`}
+    >
       {/* Navigation Bars (horizontal and vertical) */}
-      <header id="menu" className="grid grid-cols-3 grid-rows-6">
+      <header id="menu" className="grid grid-cols-3 grid-rows-2">
         <section id="navbar-1" className="h-[10vh] row-start-1 col-span-3">
           {/* Navigation Bar - 1 */}
-          <ul id="navbar-1-elements"
+          <ul
+            id="navbar-1-elements"
             className="grid grid-cols-3 grid-rows-2 items-center justify-center"
           >
-            <li id="home-logo-box"
-              className={`text-3xl col-start-2 sm:col-start-1 row-start-1`}
+            <li
+              id="home-logo-box"
+              className={`visible sm:invisible text-3xl col-start-2 sm:col-start-1 row-start-1`}
             >
-              <Image id="logo-home"
+              <Image
+                id="logo-home"
                 src={logoImg}
                 alt="Logo Image"
                 className="sm:m-0 my-0 mx-auto w-4/5 h-4/5 sm:w-3/6 md:w-2/6 lg:w-1/5 sm:h-3/6 md:h-2/6 lg:h-1/5"
               />
             </li>
-            <li id="home-small-navbar-btn"
-              className="sm:hidden text-center col-start-1"
+            <li
+              id="home-small-navbar-btn"
+              className="sm:hidden text-center row-start-1 col-start-1"
             >
-              <MenuOpenRoundedIcon 
-              className="w-[3rem] h-[3rem]" />
+              <MenuOpenRoundedIcon className="hover:text-emerald-500 w-[3rem] h-[3rem]" />
+            </li>
+            <li
+              id="home-log-out"
+              className="sm:hidden text-center row-start-1 col-start-3"
+            >
+              <ExitToAppRoundedIcon 
+              className="hover:text-emerald-500 w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
             </li>
             {/* <ul id="home-small-navbar-elements" 
                     className="sm:hidden flex flex-col gap-8 absolute top-0 text-center items-center justify-center bg-black text-white w-screen h-screen">
@@ -106,34 +119,69 @@ export default async function Index() {
               <li>Journals</li>
               <li>Patents</li>  
             </ul> */}
-            <h1 id="home-greeting-user-header"
+            <h1
+              id="home-greeting-user-header"
               className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl text-emerald-900 font-semibold text-center row-start-2 col-span-3 sm:col-span-1 sm:col-start-2 sm:row-start-1 -mt-20 sm:m-0`}
             >
               Welcome back! [user.name]
             </h1>
-            <ul id="home-user-actions-elements"
+            <ul
+              id="home-user-actions-elements"
               className={`row-start-1 col-start-3 justify-self-end flex flex-row items-center justify-center gap-2 sm:gap-4 md:gap-6 pr-4`}
             >
-              <li id="home-user-profile-link" className="invisible sm:visible">
-                <AccountCircleOutlinedIcon className="w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[50px] md:h-[50px] lg:w-xs lg:h-xs" />
+              <li id="home-user-profile-link" className="hidden sm:inline">
+                <AccountCircleOutlinedIcon className="hover:text-emerald-500 w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
               </li>
-              <li id="home-user-settings-link" className="invisible sm:visible">
-                <SettingsOutlinedIcon className="w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[50px] md:h-[50px] lg:w-xs lg:h-xs" />
+              <li id="home-user-settings-link" className="hidden sm:inline">
+                <SettingsOutlinedIcon className="hover:text-emerald-500 w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
               </li>
-              <li id="home-log-out">
-                <ExitToAppRoundedIcon 
-                className="w-[3rem] h-[3rem] sm:w-[40px] sm:h-[40px] md:w-[50px] md:h-[50px] lg:w-xs lg:h-xs" />
+              <li id="home-log-out" className="hidden sm:inline">
+                <ExitToAppRoundedIcon className="hover:text-emerald-500 w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
               </li>
             </ul>
           </ul>
         </section>
 
-        <section id="navbar-2" className="row-start-2 h-90vh fixed invisible sm:visible sm:top-[20%] md:top-[15%]">
+        <section
+          id="navbar-2"
+          className="bg-teal-500 row-start-2 w-[10vw] h-screen absolute invisible sm:visible top-0"
+        >
           {/* Navigation Bar - 2 */}
-            <ul id="navbar-2-elements"
-                className="grid grid-cols-1 grid-rows-6">
-                  <li>1</li>
-            </ul>
+          <ul id="navbar-2-elements" className="lg:text-sm sm:text-[0.60rem] grid grid-cols-1 grid-rows-6 sm:gap-2 lg:gap-[1.5rem] items-center justify-between text-center">
+          <li>
+              <Image
+                id="logo-home"
+                src={logoImg}
+                alt="Logo Image"
+                className="mx-auto lg:w-4/6 lg:h-4/6 md:3/5 md:3/5 w:2/5 h:2/5 pt-2"
+              />
+            </li>
+            <li className="hover:text-emerald-300 ">
+              <DashboardOutlinedIcon
+              className="w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
+              <p>Dashboard</p>
+            </li>
+            <li className="hover:text-emerald-300 ">
+              <WorkOutlineOutlinedIcon
+              className="w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
+              <p>Workshops</p>
+              </li>
+            <li className="hover:text-emerald-300 ">
+              <Groups2OutlinedIcon
+              className="w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
+              <p>Conferences</p>
+            </li>
+            <li className="hover:text-emerald-300 ">
+              <MenuBookOutlinedIcon
+              className="w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
+              <p>Journals</p>
+            </li>
+            <li className="hover:text-emerald-300 ">
+              <BiotechOutlinedIcon
+              className="w-[2.5rem] h-[2.5rem] sm:w-[40px] sm:h-[40px] md:w-[45px] md:h-[45px] lg:w-[50px] lg:h-[50px]" />
+              <p>Patents</p>
+              </li>
+          </ul>
         </section>
       </header>
     </div>
