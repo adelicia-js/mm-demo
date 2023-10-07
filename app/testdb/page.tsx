@@ -202,12 +202,12 @@ export default async function Index() {
 
         <section
           id="navbar-2"
-          className="bg-teal-500 row-start-2 w-[10vw] h-screen absolute invisible sm:visible top-0"
+          className="bg-teal-500 row-start-2 w-[10vw] h-full absolute invisible sm:visible top-0"
         >
           {/* Navigation Bar - 2 */}
           <ul
             id="navbar-2-elements"
-            className="lg:text-sm sm:text-[0.60rem] grid grid-cols-1 grid-rows-6 sm:gap-2 lg:gap-[1.5rem] items-center justify-between text-center"
+            className="h-full lg:text-sm sm:text-[0.60rem] grid grid-cols-1 grid-rows-6 sm:gap-2 lg:gap-[1.5rem] items-center justify-between text-center"
           >
             <li>
               <Image
