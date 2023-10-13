@@ -1,9 +1,4 @@
-import './globals.css'
-
-export const metadata = {
-  title: 'Milestone Monitor',
-  description: 'A cataloguing app',
-}
+import '../../globals.css'
 
 export default function RootLayout({
   children,
@@ -13,7 +8,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <main className="">
+          {children}
+        </main>
       </body>
     </html>
   )
