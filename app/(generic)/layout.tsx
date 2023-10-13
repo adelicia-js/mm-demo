@@ -10,6 +10,8 @@ const bodyText = Poppins({
   subsets: ["latin"],
 });
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: "Milestone Monitor",
   description: "A cataloguing app",
